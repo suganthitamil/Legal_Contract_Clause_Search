@@ -1,0 +1,44 @@
+[project]
+name = "legal-contract-clause-search"
+version = "0.1.0"
+description = "Clause-aware semantic + keyword search over legal contracts (CUAD) with Qdrant, filters by contract type and sign date"
+readme = "README.md"
+authors = [
+    { name = "Suganthi Tamilarasu", email = "tamilarasu.suganthi+orbc@orbcomm.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "anthropic>=2.9.0",
+    "chromadb>=1.5.9",
+    "fastapi>=0.163.1",
+    "fastembed>=0.9.1",
+    "httpx>=0.28.1",
+    "numpy>=2.5.4",
+    "pandas>=3.1.1",
+    "pydantic>=2.14.3",
+    "pydantic-settings>=2.16.2",
+    "qdrant-client>=1.20.0",
+    "typer>=0.29.0",
+    "uvicorn[standard]>=0.54.0",
+]
+
+[project.scripts]
+legal-contract-clause-search = "legal_contract_clause_search:main"
+lccs = "legal_contract_clause_search.cli:app"
+
+[build-system]
+requires = ["uv_build>=0.13.1,<0.14.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "ipykernel>=7.4.0",
+    "pytest>=9.2.0",
+    "ruff>=0.17.4",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 120
